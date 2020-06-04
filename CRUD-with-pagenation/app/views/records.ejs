@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+     <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="bg-info">
+    <div class="col-md-6 offset-md-3" style="background-color: #fff;margin-top: 25px;padding: 20px;">
+        <div>
+        <form action="/search/" method="POST">
+            <div class="form-group row">
+            <div class="col-md-3">
+              <label for="name">Name</label>
+              <input type="text" name='fltrname' id='myname' class="form-control" id='name'>
+            </div>
+            <div class="col-md-3">
+              <label for="email">Email</label>
+              <input type="text" name='fltremail' class="form-control" id="email" >
+            </div>
+            <div class="col-md-3">
+                <label for="city">City</label>
+                <input type="text" name='fltrcity' class="form-control" id="city">
+              </div>
+              <div class="col-md-3">
+                <label for="city">&nbsp</label>
+              <button type="submit" class=" form-control btn btn-primary">Search</button>
+            </div>
+        </div>
+          </form>
+        </div>
+        <h3><a class="btn btn-secondary"href="/"><i class="fa fa-plus"></i> Create New</a>  Employee List</h3>
+        <table class="table table-striped" id="mytable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>City</th>
+            <th>Photo</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% record.forEach(item =>{ %>
+        <tr>
+            <td><%= item.fullname %></td>
+            <td><%= item.email %></td>
+            <td><%= item.mobile %></td>
+            <td><%= item.city %></td>
+            <td>
+              <% if(item.image){ %>
+              <img src="uploads/<%= item.image %>" alt="Image" width="60"/>
+            </td>
+            <% } %>
+            <td>
+                <a href='http://localhost:5000/edit/<%= item._id %>'><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+                <a href='http://localhost:5000/delete/<%= item._id %>'><i  class="fa fa-trash fa-lg" aria-hidden="true" ></i></a>
+            </td>
+        </tr>
+       <% }) %>
+    </tbody>
+</table>
+<% if (pages > 0) { %>
+  <ul class="pagination justify-content-center">
+      <% if (current == 1) { %>
+          <li class="disabled page-item"><a class="page-link">First</a></li>
+      <% } else { %>
+          <li class="page-item"><a class="page-link" href="/records/1">First</a></li>
+      <% } %>
+      <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+      <% if (i !== 1) { %>
+          <li class="disabled"><a>...</a></li>
+      <% } %>
+      <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+          <% if (i == current) { %>
+              <li class="page-item" class="active"><a class="page-link"><%= i %></a></li>
+          <% } else { %>
+              <li class="page-item"><a class="page-link"href="/records/<%= i %>"><%= i %></a></li>
+          <% } %>
+          <% if (i == Number(current) + 4 && i < pages) { %>
+              <li class="page-item"class="disabled"><a class="page-link">...</a></li>
+          <% } %>
+      <% } %>
+      <% if (current == pages) { %>
+          <li class="page-item"class="disabled"><a class="page-link">Last</a></li>
+      <% } else { %>
+          <li class="page-item"><a class="page-link"href="/records/<%= pages %>">Last</a></li>
+      <% } %>
+  </ul>
+<% } %>
+</div>
+ <script src='/script.js'></script>
+</body>
+</html>

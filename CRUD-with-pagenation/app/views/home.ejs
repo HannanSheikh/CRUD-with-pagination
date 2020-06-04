@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Records</title>
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="bg-info">
+    <div class="row">
+        <div class="col-md-6 offset-md-3" style="background-color: #fff;margin-top: 25px;padding: 20px;">
+                <h3>Insert Record</h3>
+    <form action="/" method='POST'autocomplete="off" id="myform" enctype="multipart/form-data">
+        <div class="form-group">
+        <label for="exampleInputName">Full Name</label>
+        <input type="text" name="fullname" placeholder="Full Name" class="form-control" id="exampleInputName" />
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail">Email</label>
+        <input type="text" name="email" placeholder="Email" class="form-control" id="exampleInputEmail"/>
+    </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+        <label for="exampleInputMobile">Mobile</label>
+        <input type="text" name="mobile" placeholder="Mobile" class="form-control"  id="exampleInputMobile"/>
+    </div>
+       
+            <div class="form-group col-md-6">
+        <label for="exampleInputCity">City</label>
+        <input type="text" name="city" placeholder="City" class="form-control" id="exampleInputCity"/>
+    </div>
+       <div class="form-group">
+        <label for="exampleInputImage">Image</label>
+        <input type="file" name="file"class="form-control" id="exampleInputImage"/>
+       </div>
+        </div>
+        <div class="form-group">
+        <button type="submit" class="btn btn-primary"><i class="fa fa-database"></i> Submit</button>
+        <a class="btn btn-secondary"href="/records"><i class="fa fa-list"></i> View all</a>
+    </div>
+    </form>
+</div>
+</div>
+
+</body>
+</html>
